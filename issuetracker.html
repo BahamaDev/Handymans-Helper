@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Val's Job Tracker</title>
+
+    <link rel="stylesheet" href="issuetracker.css">
+
+</head>
+<body>
+
+<section class="input-section">
+    <!-- input section -->
+
+<form action='' method="GET" id="info-form">
+    <label for="title">Job Name</label>
+    <input type="text" name="title" id="title" required/>
+
+    <label for="description">Description</label>
+    <input type="text" name="description" id="description" placeholder="100 word max" required/>
+
+    <label for="unit-number">Aparment Number</label>
+    <input type="number" name="unit-number" id="unit-number" required/>  
+
+    <label for="work-done">Action Taken</label>
+    <input type="text" name="work-done" id="work-done" placeholder="100 word max"/> 
+
+    <label for="assign-to">Assing To</label>
+    <select name="assign-to" id="assign-to" class="selector" required>
+        <option disabled selected>Choose Manager</option>
+        <option value="Hiram">Hiram</option>
+        <option value="Keldan">Keldan</option>
+        <option value="Macy">Macy</option>
+        <option value="Jaylan">Jaylan</option>
+        <option value="Barack">Barack</option>
+    </select>
+
+
+
+    <label for="job-status">Job Status</label>
+    <select name="job-status" id="job-status" required>
+        <option disabled selected> Choose Status</option>
+        <option value="active">Active</option>
+        <option value="active">Pending</option>
+        <option value="active">Completed</option>
+    </select>
+
+    <button type="submit" id="submit-button"> Submit Job</button>
+
+    </form>;
+
+</section>
+
+
+
+
+<section>
+
+
+    <ul id="output-section" >
+
+
+       <!-- <li class="newjob">
+         <div class="titlesec"></div>
+         <div class="descripsec"></div> 
+         <div class="apartsec"></div>
+         <div class="workdonesec"></div>
+         <div class="ownersec"></div>
+         <div class="statussec"></div> -->
+
+    </ul>
+
+</section>
+
+
+
+
+
+
+
+
+<script src="issuetracker.js"></script>
+
+</body>
+</html>

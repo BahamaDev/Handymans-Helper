@@ -1,0 +1,85 @@
+body{
+    /* display: grid; */
+    grid-template-columns: 50%;
+    justify-content: center;
+}
+
+
+
+#info-form{
+background-color: rgb(184, 184, 184);
+display: grid;
+grid-template-columns: 500px;
+width: 700px;
+height: 50vw;
+margin: 0 auto;
+align-items: center;
+justify-content: center;
+}
+
+input{
+    height: 30px;
+}
+
+#output-section{
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+    width: 70vw;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border: darkturquoise 1px solid;
+}
+
+.entrycontainer{
+display: grid;
+grid-template-columns:  25% 25% 25% 25%;
+grid-template-rows: 50% 50%;
+background-color: rgb(242, 188, 170);
+height: 70px;
+width: 100%;
+align-items: center;
+justify-content: space-around;
+
+}
+
+
+
+.titlesec{
+    border: darkslategrey 1px solid;
+}
+
+
+
+.descripsec{
+    border: pink 1px solid;
+}
+
+
+
+.apartsec{
+    border: purple 1px solid;
+}
+
+
+
+
+.workdonesec{
+     border: green 1px solid;
+}
+
+
+
+.ownersec{
+     border: orange 1px solid;
+}
+
+
+
+
+.statussec{
+     border: red 1px solid;
+}
+
+
