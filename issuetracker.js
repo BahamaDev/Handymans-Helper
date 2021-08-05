@@ -1,18 +1,15 @@
-//This ensures page is fully loaded before running anything. Alway start with this.
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('submit-button').addEventListener('click', addJob)  //This adds event to the submit button.
 
-})
+//sets value of keyFromlocal to either whatever is gotten from local storage or an empty array.
+let keyFromLocalStorage = JSON.parse(localStorage.getItem('savedToLocal')) || [];
 
-
-
-let masterJobArr = []
 
 
 const addJob = (ev) => {
     ev.preventDefault();
 
-    // creates a jobEntry object and grabs values from DOM 
+
+
+    // creates a jobEntry object, creates its properties, and grabs their values from the DOM 
     let jobEntry = {
         jobName: document.getElementById('title').value,
         description: document.getElementById('description').value,
@@ -23,38 +20,41 @@ const addJob = (ev) => {
         }
 
 
-    //takes the jobEntry object and pushes it to the masterJobArr
-    masterJobArr.unshift(jobEntry);
-    document.forms[0].reset();  //reset form
-    // console.log(`pushed {jobEntry} to the masterJobArr.`);
-    // console.log("your Job Array is" + JSON.stringify(masterJobArr));
+
+//FIRSTthis pushes the entry to keyFromLocalStorage whether it is composed of  paresed data already gotten from localStorage, or just an empty array as indicated above. 
+    keyFromLocalStorage.push(jobEntry)
+
+
+// This now takes that new updated value of keyFromlocalStorage and pushes it to the same local storage Array.
+    localStorage.setItem('savedToLocal', JSON.stringify(keyFromLocalStorage))
 
 
 
-
-    //sets masterJobArr to local storage in a key value pair-  'savedToLocal': masterJobArr
-    localStorage.setItem('savedToLocal', JSON.stringify(masterJobArr));
+    document.forms[0].reset();  //resets form
    
-
-
-// grabs and creates string from data from local storage and assigns it to keyFromLocalStorage. 
-    let keyFromLocalStorage = '\n' + JSON.stringify(localStorage.getItem('savedToLocal', '\t', 2))  ;
-    console.log(keyFromLocalStorage);
-
-
-
-    let forScreen = document.getElementById("output-section");
-
-
-    forScreen.innerHTML = "<li class='entrycontainer'><h3>" + `${keyFromLocalStorage}` +
-        "</h3>" + "</li>"
-
+  
 }
 
 
+const form = document.getElementById('info-form')
+form.addEventListener('submit',
+    addJob
+)
+
+console.log(keyFromLocalStorage, "hello");
 
 
 
+// This function loops from the keyFromLocalStorage and pulls the jobName from each object, then pushes it to the DOM.
+function renderData() {
+    keyFromLocalStorage.forEach(job => {
+        let forScreen = document.getElementById("output-section");
+        forScreen.innerHTML += `<li> ${job.jobName} </li>`
+    })
+}
+
+
+renderData();
 
 
 

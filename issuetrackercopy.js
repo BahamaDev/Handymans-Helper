@@ -25,22 +25,22 @@ const addJob = (ev) => {
 
   
 
- //iflocal storage is empty then set the value to an array.
+ //if local storage is empty then set the value to an array.
         if(localStorage.getItem('savedToLocal')== null);{
             localStorage.setItem('savedToLocal', '[]')
-}
+        }
 
     
-    let oldData =  JSON.parse(localStorage.getItem('savedToLocal'))
-    oldData += jobEntry
+        let oldData =  JSON.parse(localStorage.getItem('savedToLocal'))
+        oldData
   
 
-    localStorage.setItem('savedToLocal', JSON.stringify(oldData))
-    // console.log(localStorage)
+        localStorage.setItem('savedToLocal', JSON.stringify(oldData))
+        // console.log(localStorage)
 
 
     
-    document.forms[0].reset();  //reset form
+        document.forms[0].reset();  //reset form
 
 
 
