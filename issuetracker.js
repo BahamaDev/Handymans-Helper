@@ -17,22 +17,22 @@ const addJob = (ev) => {
         work_done: document.getElementById('work-done').value,
         owner: document.getElementById('assign-to').value,
         status: document.getElementById('job-status').value,
-        }
+    }
 
 
 
-//FIRSTthis pushes the entry to keyFromLocalStorage whether it is composed of  paresed data already gotten from localStorage, or just an empty array as indicated above. 
+    //FIRSTthis pushes the entry to keyFromLocalStorage whether it is composed of  paresed data already gotten from localStorage, or just an empty array as indicated above. 
     keyFromLocalStorage.push(jobEntry)
 
 
-// This now takes that new updated value of keyFromlocalStorage and pushes it to the same local storage Array.
+    // This now takes that new updated value of keyFromlocalStorage and pushes it to the same local storage Array.
     localStorage.setItem('savedToLocal', JSON.stringify(keyFromLocalStorage))
 
 
 
     document.forms[0].reset();  //resets form
-   
-  
+
+
 }
 
 
