@@ -1,3 +1,3 @@
 # Issue-Tracker
 
-Basic Issue Tracker using HTML, CSS, and JS.
+Basic Issue Tracker with full CRUD operations using Vanilla HTML, CSS, and JS.
