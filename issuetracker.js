@@ -46,6 +46,8 @@ function renderData() {
 const addJob = (ev) => {
     ev.preventDefault();
 
+    
+
     // creates a jobEntry object, creates its properties, and grabs their values from the DOM 
     let jobEntry = {
         jobName: document.getElementById('title').value,
@@ -57,6 +59,9 @@ const addJob = (ev) => {
         id: Math.floor(Math.random() * 100)
     }
 
+    
+
+    
 
 
 
@@ -147,7 +152,7 @@ function editJob(id) {
     document.getElementById('job-status').value = job.status;
 
 
-    let rightLocation = document.getElementById("input-section")
+    let rightLocation = document.getElementById("info-form")
     let idHolder = document.createElement('input')
     idHolder.setAttribute("id", 'id-Holder')
     idHolder.setAttribute("readonly", "true")
@@ -164,18 +169,24 @@ function editJob(id) {
     let subButton = document.getElementById("submit-button")
     let closeButtons = document.getElementsByClassName("btn btn-warning")
     let deleteButtons = document.getElementsByClassName("btn btn-danger")
+    let jobButtons = document.getElementsByClassName("job-button")
     let editButtons = document.getElementsByClassName("edit-button")
     subButton.parentNode.removeChild(subButton)
+    
 
 
     for (let i = 0; i < closeButtons.length; i++) {
         closeButtons[i].style.display = "none"
     }
-    for (let i = 0; i < deleteButtons.length; i++) {
-        deleteButtons[i].style.display = "none"
-    }
-    for (let i = 0; i < editButtons.length; i++) {
-        editButtons[i].style.display = "none"
+    // for (let i = 0; i < deleteButtons.length; i++) {
+    //     deleteButtons[i].style.display = "none"
+    // }
+    // for (let i = 0; i < editButtons.length; i++) {
+    //     editButtons[i].style.display = "none"
+    // }
+
+    for (let i = 0; i < jobButtons.length; i++) {
+        jobButtons[i].style.display = "none"
     }
 
 
@@ -268,8 +279,7 @@ function saveUpdatedJob(id) {
 
 
 // Things I need mentors help with
-        // Edit function: Needs to repopulate input fields and allow confirmation of new submission.
-        // - Center everything properly using CSS
-        // - Ensure that all elements are properly responsive
         // Make everything look good!
+        // Needs to style and place update button
+        // Needs to disable submit button untilal input feilds are filled
 

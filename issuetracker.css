@@ -377,8 +377,15 @@ font-size: 15pt;
 
 
 
-
-
+#save-button{
+height:3em;
+width: 40%;
+background-color: yellowgreen;
+border-radius: var(--big-radius);
+background-color: ;
+margin: 5px auto;
+border: none;
+}
 
 
 
