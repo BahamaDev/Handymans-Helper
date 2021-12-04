@@ -15,72 +15,89 @@
     <link href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integritly="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --> -->
+        integritly="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
 
 </head>
 
 <body onload="renderData()">
+    <div class="background-image">
+
+        <span id="header-bar">
+            <!-- <img id="logo" src="/images/logo-Placeholder.png" alt="Logo"></img> -->
+            <h1 id="heading">Handyman's Helper</h1>
+
+            <p id="sub-head">Repair Tracking Tool</p>
+
+        </span>
 
 
-    <div id="header-bar">
-        <!-- <img id="logo" src="/images/logo-Placeholder.png" alt="Logo"></img> -->
-        <h1 id="heading">Handyman's Helper</h1>
+        <section id="input-section">
+            <!-- input section -->
 
-        <p id="sub-head">Repair Tracking Tool</p>
+            <form method="GET" id="info-form">
+                <label for="title">Job Name</label>
+                <input type="text" name="title" id="title" required />
 
-    </div>
+                <label for="description">Description</label>
+                <input id="description" type="text" id="description" placeholder="100 word max" required />
 
+                <label for="unit-number">Apartment Number</label>
+                <input type="number" name="unit-number" id="unit-number" required />
 
-    <section id="input-section">
-        <!-- input section -->
+                <label for="work-done">Action Taken</label>
+                <input type="text" name="work-done" id="work-done" placeholder="100 word max" />
 
-        <form method="GET" id="info-form">
-            <label for="title">Job Name</label>
-            <input type="text" name="title" id="title" required />
+                <label for="assign-to">Assing To</label>
+                <select name="assign-to" id="assign-to" class="selector" required>
+                    <option disabled selected>Choose Manager</option>
+                    <option value="Hiram">Hiram</option>
 
-            <label for="description">Description</label>
-            <input id="description" type="text" id="description" placeholder="100 word max" required />
+                    <option value="Keldan">Keldan</option>
+                    <option value="Macy">Macy</option>
+                    <option value="Jaylan">Jaylan</option>
+                    <option value="Barack">Barack</option>
+                </select>
 
-            <label for="unit-number">Apartment Number</label>
-            <input type="number" name="unit-number" id="unit-number" required />
+                <label for="job-status">Job Status</label>
+                <select name="job-status" id="job-status" required>
+                    <option disabled selected> Choose Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                </select>
 
-            <label for="work-done">Action Taken</label>
-            <input type="text" name="work-done" id="work-done" placeholder="100 word max" />
-
-            <label for="assign-to">Assing To</label>
-            <select name="assign-to" id="assign-to" class="selector" required>
-                <option disabled selected>Choose Manager</option>
-                <option value="Hiram">Hiram</option>
-
-                <option value="Keldan">Keldan</option>
-                <option value="Macy">Macy</option>
-                <option value="Jaylan">Jaylan</option>
-                <option value="Barack">Barack</option>
-            </select>
-
-            <label for="job-status">Job Status</label>
-            <select name="job-status" id="job-status" required>
-                <option disabled selected> Choose Status</option>
-                <option value="Active">Active</option>
-                <option value="Pending">Pending</option>
-                <option value="Completed">Completed</option>
-            </select>
-
-            <button type="submit" id="submit-button"> Submit Job</button>
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-
-
-
-
-
-        </form>
-
-    </section>
+                <button type="submit" id="submit-button"> SUBMIT JOB</button>
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 
 
 
 
-    <div>
+
+            </form>
+
+        </section>
+
+
+        <section class="data-output">
+            <div class="job-count">
+                Your current Job Count is 6
+            </div>
+            <div class="sorter">
+                <p>Sort jobs by
+
+                    <select name="sort-options" id="sort-selection">
+                        <option selected value="name">name</option>
+                        <option value="status">status</option>
+                        <option value="Unit">unit</option>
+
+                    </select>
+                </p>
+            </div>
+
+
+        </section>
+
 
 
         <ul id="output-section">
@@ -90,13 +107,13 @@
 
         </ul>
 
+
+
+
+
+        <script src="issuetracker.js"></script>
+
     </div>
-
-
-
-    <script src="issuetracker.js"></script>
-
-
 </body>
 
 </html>
