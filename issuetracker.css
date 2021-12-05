@@ -6,10 +6,6 @@
 :root {
   --main-background-color: #f4f4f4de;
   --main-text-color: #33393d;
-  /* --other-text-color: #666b6e; */
-  /* --other-element-color: #9dc8ef; */
-  /* --main-button-color: #ffcd24; */
-  /* --main-element-color: #2AABE4; */
   --main-element-color: #fc4b1aee;
   --other-element-color: #4abdac;
   --main-bg-color: #fc4b1a9a;
@@ -57,14 +53,14 @@ body {
 
 #header-bar {
   display: flex;
-  grid-template-columns: repeat(6, 1fr);
+  flex-flow: row;
   max-width: 800px;
   height: auto;
-  border: 1px orange solid;
+  /* border: 1px orange solid; */
   align-items: center;
-  justify-items: center;
   margin: 0 auto;
   padding: 3em 1em 1em;
+  justify-content: space-evenly;
 }
 
 @media (max-width: 590px) {
@@ -76,23 +72,20 @@ body {
   }
 }
 
-#logo {
-  height: 100%;
+#logo-img {
+  max-height: 150px;
   width: auto;
+  /* border: 1px white solid; */
 }
 
- #heading {
-  font-size: 50pt;
-  color: whitesmoke;
-  text-shadow:;
-  /* max-width: 50vw; */
-  /* height: 90%; */
+#heading {
+  font-size: 40pt;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  color: white;
   margin: 0 auto;
-  text-align: center;
-  grid-column-start: 3;
-  grid-column-end: 4;
-  border: 1px blue solid;
-} 
+  /* border: 1px blue solid; */
+}
 
 @media (max-width: 590px) {
   #heading {
@@ -102,11 +95,13 @@ body {
 
 #sub-head {
   text-align: center;
-  border: 1px black solid;
+  color: white;
+  /* border: 1px black solid; */
   font-size: 20pt;
+  font-weight: bold;
   height: 90%;
-  word-wrap: normal;
-  margin: 0 auto;
+  /* word-wrap: normal; */
+  margin: 5px auto;
 }
 
 #info-form {
@@ -295,7 +290,6 @@ select {
   font-size: 15pt;
 }
 
-
 @media (max-width: 500px) {
   .sect-label {
     font-size: 13pt;
@@ -375,4 +369,32 @@ select {
   background-color: ;
   margin: 5px auto;
   border: none;
+}
+
+#footer-section {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: space-around;
+}
+
+.logos-section {
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.social-icon {
+  padding: 10px;
+  max-width: 40px;
+}
+
+.social-icon:hover {
+}
+
+.help-text {
+  color: white;
+  /* text-decoration: none; */
+  font-size: 12pt;
+  font-weight: bold;
 }
