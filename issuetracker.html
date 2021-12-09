@@ -40,7 +40,10 @@
         <section id="input-section">
             <!-- input section -->
 
-            <form method="GET" id="info-form">
+
+
+            <form method="POST" id="info-form" data-netlify="true">
+                <!-- <form method="GET" id="info-form"> -->
                 <label for="title">Job Name</label>
                 <input type="text" name="title" id="title" required />
 
@@ -53,7 +56,7 @@
                 <label for="work-done">Action Taken</label>
                 <input type="text" name="work-done" id="work-done" placeholder="100 word max" />
 
-                <label for="assign-to">Assing To</label>
+                <label for="assign-to">Assign To</label>
                 <select name="assign-to" id="assign-to" class="selector" required>
                     <option disabled selected>Choose Manager</option>
                     <option value="Hiram">Hiram</option>
@@ -116,9 +119,6 @@
 
             <a href="#" class="help-text">Help and Support</a>
 
-
-
-
             <div class="logos-section">
 
                 <a href="#">
@@ -132,7 +132,8 @@
                     <img src="https://i.ibb.co/SwKjvnr/white-youtube.png" alt="youtube-icon" class='social-icon'></a>
 
             </div>
-        </footer id="footer">
+
+        </footer>
 
 
 
