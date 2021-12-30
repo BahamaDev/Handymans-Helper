@@ -20,16 +20,10 @@ function renderData() {
         <div class="status_sect info-box"> <label class="sect-label">Status: </label> ${job.status}</div>
         <div class="descript_sect info-box"> <label class="sect-label"> Description: </label> ${job.description}</div>
         <div class="work_done_sect info-box"> <label class="sect-label"> Action Taken: </label> ${job.Work_done} </div>
-
-    
-         </div>
-         <div class="entry-button"> 
-
-         <button onclick="deleteJob(${job.id})" class="delete-button job-button"> Delete </button>
+        <div class="entry-button"> 
+        <button onclick="deleteJob(${job.id})" class="delete-button job-button"> Delete </button>
         <button class="edit-button job-button" onclick="editJob(${job.id})"> Edit </button>
-         
-         </div>
-
+        </div>
         </li> `;
 
     // < button onclick = "setStatusClosed(${job.id})" class="btn btn-warning" > Close </button >
@@ -67,18 +61,18 @@ const form = document.getElementById("info-form");
 form.addEventListener("submit", addJob);
 
 // Changes Status to Completed
-function setStatusClosed(id) {
-  let jobs = keyFromLocalStorage.forEach((job) => {
-    if (job.id == id) {
-      console.log(`ready to complete ${job.id}`);
-      job.status = "Completed";
-    }
-  });
+// function setStatusClosed(id) {
+//   let jobs = keyFromLocalStorage.forEach((job) => {
+//     if (job.id == id) {
+//       console.log(`ready to complete ${job.id}`);
+//       job.status = "Completed";
+//     }
+//   });
 
-  localStorage.setItem("savedToLocal", JSON.stringify(jobs));
+//   localStorage.setItem("savedToLocal", JSON.stringify(jobs));
 
-  renderData();
-}
+//   renderData();
+// }
 
 // Deletes Job
 function deleteJob(id) {
@@ -93,17 +87,11 @@ function deleteJob(id) {
   renderData();
 }
 
+//////// Edits Job
 function editJob(id) {
   // Get job data
-
   let job = keyFromLocalStorage.find((job) => job.id == id);
-  let newJobIndex = keyFromLocalStorage.findIndex((job) => job.id == id);
-  console.log("passed to editJob: " + id);
-  console.log("nji from editJob " + newJobIndex);
 
-  !job ? alert("job not found") : alert(`You are about to alter ${job}`);
-
-  console.log;
   // Set inputs values
   document.getElementById("description").value = job.description;
   document.getElementById("title").value = job.jobName;
@@ -115,17 +103,16 @@ function editJob(id) {
   let rightLocation = document.getElementById("info-form");
   let idHolder = document.createElement("input");
   idHolder.setAttribute("id", "id-Holder");
+  idHolder.setAttribute("type", "text");
   idHolder.setAttribute("readonly", "true");
   rightLocation.appendChild(idHolder);
   idHolder.value = id;
-  idHolder.style.display = "none";
+  // idHolder.style.display = "none";
 
   //Hides unncessary buttons
   let subButton = document.getElementById("submit-button");
   let closeButtons = document.getElementsByClassName("btn btn-warning");
-  let deleteButtons = document.getElementsByClassName("btn btn-danger");
   let jobButtons = document.getElementsByClassName("job-button");
-  let editButtons = document.getElementsByClassName("edit-button");
   subButton.parentNode.removeChild(subButton);
 
   for (let i = 0; i < closeButtons.length; i++) {
@@ -136,23 +123,20 @@ function editJob(id) {
     jobButtons[i].style.display = "none";
   }
 
-  // insert Save button
-  let saveButton = document.createElement("button");
-  saveButton.addEventListener("onclick", saveUpdatedJob(id));
-  saveButton.setAttribute("id", "save-button");
-  saveButton.innerText = "Save Updated Data";
-  rightLocation.appendChild(saveButton);
-
-  ///need to preserve the JOB id Value to pass it to save Updated Job.
-  return;
+  stageData();
 }
 
-function saveUpdatedJob(passedId) {
-  //Composes new object from updated input fields and forms new object
-  console.log("this was passed to saveUpdated Job:" + passedId);
+// Gets the Id from the idHolder and holds it.
+function getId() {
+  let fromIdHolder = document.getElementById("id-Holder");
+  let givenId = fromIdHolder.value;
+  // console.log(givenId);
+  return givenId;
+}
+let passedId = getId;
 
-  //   location.reload();
-
+function stageData() {
+  let passedId1 = passedId();
   let newJobEntry = {
     jobName: document.getElementById("title").value,
     description: document.getElementById("description").value,
@@ -160,39 +144,49 @@ function saveUpdatedJob(passedId) {
     work_done: document.getElementById("work-done").value,
     owner: document.getElementById("assign-to").value,
     status: document.getElementById("job-status").value,
-    id: document.getElementById("id-Holder").value,
+    id: passedId,
   };
-  console.log(newJobEntry);
-
-  //Removes Save Button from DOM
-
-  let jobIndex = keyFromLocalStorage.findIndex((job) => job.id == passedId);
-  console.log("jobIndex from SUJ" + jobIndex);
-
-  keyFromLocalStorage.splice(jobIndex, 1, newJobEntry);
-  console.log(keyFromLocalStorage);
-
-  localStorage.setItem("savedToLocal", JSON.stringify(keyFromLocalStorage));
-
-  document.forms[0].reset(); //resets form
-
-  let saveButton = document.getElementById("save-button");
-  saveButton.parentElement.removeChild(saveButton);
-  renderData();
+  let rightLocation = document.getElementById("info-form");
+  let saveButton = document.createElement("button");
+  saveButton.addEventListener(
+    "onclick",
+    secondaryCheck(passedId1, newJobEntry)
+  );
+  saveButton.setAttribute("id", "save-button");
+  saveButton.innerText = "Save Updated Data";
+  rightLocation.appendChild(saveButton);
+  return;
 }
 
-// Need modal to confirm edit.
-// remove input box outline
-// insert focus animation
-// insert hover animation for containers
-// fix header
-// insert logo
+function secondaryCheck(givenId, givenJobEntry) {
+  if (confirm("Confirm Update") === true) {
+    let givenId1 = givenId;
+    let givenJobEntry1 = givenJobEntry;
+    saveUpdatedJob(givenId1, givenJobEntry1);
+    // console.log(givenId1, givenJobEntry1);
+  } else {
+    return;
+  }
+}
 
-// https://youtu.be/MKD0Vsu0Ikw     -  For Edit Function sample
+//Inserts updated Data to Local Storage
+function saveUpdatedJob(givenId, givenJobEntry) {
+  let oldKey = keyFromLocalStorage;
+  console.log(oldKey);
+  console.log(oldKey.length);
 
-// https://www.youtube.com/watch?v=NYq9J-Eur9U&ab_channel=CodingTheSmartWay.com
+  let findId = (item) => item.id === givenId;
+  let jobIndex = oldKey.findIndex(findId);
+  console.log(jobIndex);
 
-// Things I need mentors help with
-// Make everything look good!
-// Needs to style and place update button
-// Needs to disable submit button untilal input feilds are filled
+  // let jobIndex = keyFromLocalStorage.findIndex((job) => job.id === x);
+  // console.log("jobIndex from SUJ" + jobIndex);
+
+  oldKey.splice(oldKey[jobIndex], 1, givenJobEntry);
+  console.log(oldKey);
+}
+
+// 3 main issues to be resolved:
+//  1) Why is secondaryConfirm confirm firing at edit onclick
+// 2) Why are delete and inserts not working. As well as why Id number changing when saved.
+//3) How to properly refresh the page after upates.
