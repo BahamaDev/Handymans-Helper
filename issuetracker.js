@@ -30,8 +30,11 @@ function renderData() {
   });
 }
 
+//isEditing = false;
+
 // Creates new job and pushes to storage
 const addJob = (ev) => {
+  console.log("Creating a new job");
   ev.preventDefault();
 
   // creates a jobEntry object, creates its properties, and grabs their values from the DOM
@@ -148,17 +151,22 @@ function stageData() {
   };
   let rightLocation = document.getElementById("info-form");
   let saveButton = document.createElement("button");
-  saveButton.addEventListener(
-    "onclick",
-    secondaryCheck(passedId1, newJobEntry)
-  );
+
   saveButton.setAttribute("id", "save-button");
-  saveButton.innerText = "Save Updated Data";
+  saveButton.innerText = "Save Updated Data button";
   rightLocation.appendChild(saveButton);
+  saveButton.addEventListener("onclick", (event) => {
+    event.preventDefault();
+    console.log("save button envent handler");
+    debugger;
+    secondaryCheck(passedId1, newJobEntry);
+    return false;
+  });
   return;
 }
 
 function secondaryCheck(givenId, givenJobEntry) {
+  debugger;
   if (confirm("Confirm Update") === true) {
     let givenId1 = givenId;
     let givenJobEntry1 = givenJobEntry;
