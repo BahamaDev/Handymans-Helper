@@ -2,14 +2,22 @@
 let keyFromLocalStorage =
   JSON.parse(localStorage.getItem("savedToLocal")) || [];
 
-// Render Data to Screen
+let jobCountData = keyFromLocalStorage.length;
+console.log(jobCountData);
+
+let jobCounter = document.getElementById("job-count");
+
+jobCounter.innerHTML += `<p>Your current Job Count is ${jobCountData}</p>`;
+
+///////Render Data to Screen
 function renderData() {
   let forScreen = document.getElementById("output-section");
   if (keyFromLocalStorage === []) {
-    forScreen.innerHTML += "No Job Data Available";
+    forScreen.innerHTML = "No Job Data Available";
   }
 
-  forScreen.innerHTML += " ";
+  forScreen.innerHTML = " ";
+
   keyFromLocalStorage.forEach((job) => {
     forScreen.innerHTML += `<li> 
         <div class="entrycontainer"> 
@@ -30,9 +38,7 @@ function renderData() {
   });
 }
 
-//isEditing = false;
-
-// Creates new job and pushes to storage
+/////Creates new job and pushes to storage
 const addJob = (ev) => {
   console.log("Creating a new job");
   ev.preventDefault();
@@ -45,7 +51,8 @@ const addJob = (ev) => {
     work_done: document.getElementById("work-done").value,
     owner: document.getElementById("assign-to").value,
     status: document.getElementById("job-status").value,
-    id: Math.floor(Math.random() * 100),
+
+    id: `${new Date().getTime()}${Math.floor(Math.random() * 100)}`,
   };
 
   //FIRST this pushes the entry to keyFromLocalStorage whether it is composed of  parsed data already gotten from localStorage, or just an empty array as indicated above.
@@ -55,35 +62,21 @@ const addJob = (ev) => {
   localStorage.setItem("savedToLocal", JSON.stringify(keyFromLocalStorage));
 
   document.forms[0].reset(); //resets form
-  location.reload();
+
   renderData();
 };
 
-//Adds listener and sets handler for add job.
+//////Adds listener and sets handler for add job.
 const form = document.getElementById("info-form");
 form.addEventListener("submit", addJob);
 
-// Changes Status to Completed
-// function setStatusClosed(id) {
-//   let jobs = keyFromLocalStorage.forEach((job) => {
-//     if (job.id == id) {
-//       console.log(`ready to complete ${job.id}`);
-//       job.status = "Completed";
-//     }
-//   });
-
-//   localStorage.setItem("savedToLocal", JSON.stringify(jobs));
-
-//   renderData();
-// }
-
-// Deletes Job
+////// Deletes Job
 function deleteJob(id) {
   let jobs = keyFromLocalStorage;
-
   for (i = 0; i < jobs.length; i++) {
-    if (jobs[i].id == id) console.log(`you just deleted job ${jobs[i].id}`);
-    jobs.splice(jobs[i], 1);
+    if (jobs[i].id == id) {
+      jobs.splice([i], 1);
+    }
   }
 
   localStorage.setItem("savedToLocal", JSON.stringify(jobs));
@@ -110,7 +103,6 @@ function editJob(id) {
   idHolder.setAttribute("readonly", "true");
   rightLocation.appendChild(idHolder);
   idHolder.value = id;
-  // idHolder.style.display = "none";
 
   //Hides unncessary buttons
   let subButton = document.getElementById("submit-button");
@@ -129,72 +121,90 @@ function editJob(id) {
   stageData();
 }
 
-// Gets the Id from the idHolder and holds it.
+/////Gets the Id from the idHolder and holds it.
 function getId() {
   let fromIdHolder = document.getElementById("id-Holder");
   let givenId = fromIdHolder.value;
   // console.log(givenId);
   return givenId;
 }
+
 let passedId = getId;
+
+function setSubmitButton() {}
 
 function stageData() {
   let passedId1 = passedId();
-  let newJobEntry = {
-    jobName: document.getElementById("title").value,
-    description: document.getElementById("description").value,
-    apartment: document.getElementById("unit-number").value,
-    work_done: document.getElementById("work-done").value,
-    owner: document.getElementById("assign-to").value,
-    status: document.getElementById("job-status").value,
-    id: passedId,
-  };
   let rightLocation = document.getElementById("info-form");
   let saveButton = document.createElement("button");
-
   saveButton.setAttribute("id", "save-button");
   saveButton.innerText = "Save Updated Data button";
   rightLocation.appendChild(saveButton);
-  saveButton.addEventListener("onclick", (event) => {
+
+  saveButton.addEventListener("click", (event) => {
     event.preventDefault();
-    console.log("save button envent handler");
-    debugger;
-    secondaryCheck(passedId1, newJobEntry);
+
+    secondaryCheck(passedId1);
     return false;
   });
   return;
 }
 
-function secondaryCheck(givenId, givenJobEntry) {
-  debugger;
+function secondaryCheck(givenId) {
   if (confirm("Confirm Update") === true) {
-    let givenId1 = givenId;
-    let givenJobEntry1 = givenJobEntry;
-    saveUpdatedJob(givenId1, givenJobEntry1);
-    // console.log(givenId1, givenJobEntry1);
+    let newJobEntry = {
+      jobName: document.getElementById("title").value,
+      description: document.getElementById("description").value,
+      apartment: document.getElementById("unit-number").value,
+      work_done: document.getElementById("work-done").value,
+      owner: document.getElementById("assign-to").value,
+      status: document.getElementById("job-status").value,
+      id: givenId,
+    };
+
+    saveUpdatedJob(givenId, newJobEntry);
   } else {
     return;
   }
 }
 
-//Inserts updated Data to Local Storage
+//////Inserts updated Data to Local Storage
 function saveUpdatedJob(givenId, givenJobEntry) {
+  console.log("save updated!", givenId);
   let oldKey = keyFromLocalStorage;
-  console.log(oldKey);
-  console.log(oldKey.length);
 
   let findId = (item) => item.id === givenId;
   let jobIndex = oldKey.findIndex(findId);
   console.log(jobIndex);
 
-  // let jobIndex = keyFromLocalStorage.findIndex((job) => job.id === x);
-  // console.log("jobIndex from SUJ" + jobIndex);
-
-  oldKey.splice(oldKey[jobIndex], 1, givenJobEntry);
+  oldKey.splice([jobIndex], 1, givenJobEntry);
   console.log(oldKey);
+
+  localStorage.setItem("savedToLocal", JSON.stringify(oldKey));
+
+  let idHolderField = document.getElementById("id-Holder");
+  idHolderField.parentNode.removeChild(idHolderField);
+
+  document.forms[0].reset(); //resets form
+  renderData();
+
+  ///Replaces Submit Button
+  let submitButton = document.getElementById("save-button");
+  submitButton.setAttribute("id", "submit-button");
+  submitButton.addEventListener("click", addJob);
+  submitButton.innerText = "Submit Job";
 }
 
-// 3 main issues to be resolved:
-//  1) Why is secondaryConfirm confirm firing at edit onclick
-// 2) Why are delete and inserts not working. As well as why Id number changing when saved.
-//3) How to properly refresh the page after upates.
+// Changes Status to Completed
+// function setStatusClosed(id) {
+//   let jobs = keyFromLocalStorage.forEach((job) => {
+//     if (job.id == id) {
+//       console.log(`ready to complete ${job.id}`);
+//       job.status = "Completed";
+//     }
+//   });
+
+//   localStorage.setItem("savedToLocal", JSON.stringify(jobs));
+
+//   renderData();
+// }
