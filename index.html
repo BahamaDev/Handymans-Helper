@@ -14,76 +14,76 @@
 <body onload="renderData()">
     <div class="background-image">
 
+        <div class="wrapper">
+            <div id="header-bar">
 
-        <span id="header-bar">
+                <img id='logo-img' src="/images/logo-white.png" alt="">
 
-            <img id='logo-img' src="/images/logo-white.png" alt="">
+                <!-- <img id="logo" src="/images/logo-Placeholder.png" alt="Logo"></img> -->
+                <div>
+                    <h1 id="heading">Handyman's Helper</h1>
 
-            <!-- <img id="logo" src="/images/logo-Placeholder.png" alt="Logo"></img> -->
-            <div>
-                <h1 id="heading">Handyman's Helper</h1>
 
-                <p id="sub-head">Repair Tracking Tool</p>
+                    <p id="sub-head">Repair Tracking Tool</p>
+                </div>
             </div>
-        </span>
 
-
-        <section id="input-section">
-            <!-- input section -->
+            <section id="input-section">
+                <!-- input section -->
 
 
 
-            <form method="GET" id="info-form">
-                <!-- <form method="GET" id="info-form"> -->
-                <label for="title">Job Name</label>
-                <input type="text" name="title" id="title" required />
+                <form method="GET" id="info-form">
+                    <!-- <form method="GET" id="info-form"> -->
+                    <label for="title">Job Name</label>
+                    <input type="text" name="title" id="title" required />
 
-                <label for="description">Description</label>
-                <input id="description" type="text" id="description" placeholder="100 word max" required />
+                    <label for="description">Description</label>
+                    <input id="description" type="text" id="description" placeholder="100 word max" required />
 
-                <label for="unit-number">Apartment Number</label>
-                <input type="number" name="unit-number" id="unit-number" required />
+                    <label for="unit-number">Apartment Number</label>
+                    <input type="number" name="unit-number" id="unit-number" required />
 
-                <label for="work-done">Action Taken</label>
-                <input type="text" name="work-done" id="work-done" placeholder="100 word max" />
+                    <label for="work-done">Action Taken</label>
+                    <input type="text" name="work-done" id="work-done" placeholder="100 word max" />
 
-                <label for="assign-to">Assign To</label>
-                <select name="assign-to" id="assign-to" class="selector" required>
-                    <option disabled selected>Choose Manager</option>
-                    <option value="Hiram">Hiram</option>
+                    <label for="assign-to">Assign To</label>
+                    <select name="assign-to" id="assign-to" class="selector" required>
+                        <option disabled selected>Choose Manager</option>
+                        <option value="Hiram">Hiram</option>
 
-                    <option value="Keldan">Keldan</option>
-                    <option value="Macy">Macy</option>
-                    <option value="Jaylan">Jaylan</option>
-                    <option value="Barack">Barack</option>
-                </select>
+                        <option value="Keldan">Keldan</option>
+                        <option value="Macy">Macy</option>
+                        <option value="Jaylan">Jaylan</option>
+                        <option value="Barack">Barack</option>
+                    </select>
 
-                <label for="job-status">Job Status</label>
-                <select name="job-status" id="job-status" required>
-                    <option disabled selected> Choose Status</option>
-                    <option value="Active">Active</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Completed">Completed</option>
-                </select>
+                    <label for="job-status">Job Status</label>
+                    <select name="job-status" id="job-status" required>
+                        <option disabled selected> Choose Status</option>
+                        <option value="Active">Active</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Completed">Completed</option>
+                    </select>
 
-                <button type="submit" id="submit-button"> SUBMIT JOB</button>
-                <!-- <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
+                    <button type="submit" id="submit-button"> SUBMIT JOB</button>
+                    <!-- <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
 
 
 
 
 
-            </form>
+                </form>
 
-        </section>
+            </section>
 
 
-        <section class="dashboard-output">
-            <div class="job-count" id="job-count">
-                <!-- Your current Job Count is 6 -->
-            </div>
-            <div class="sorter">
-                <!-- <p>Sort jobs by
+            <section class="dashboard-output">
+                <div class="job-count" id="job-count">
+                    <!-- Your current Job Count is 6 -->
+                </div>
+                <div class="sorter">
+                    <!-- <p>Sort jobs by
 
                     <select name="sort-options" id="sort-selection">
                         <option selected value="name">name</option>
@@ -91,42 +91,49 @@
                         <option value="Unit">unit</option>
 
                     </select> -->
-                </p>
-            </div>
+                    </p>
+                </div>
 
 
-        </section>
-
-
-
-        <ul id="output-section">
+            </section>
 
 
 
-
-        </ul>
-
-        <footer id='footer-section'>
-
-            <a href="#" class="help-text">Help and Support</a>
-
-            <div class="logos-section">
-
-                <a href="#">
-                    <img src="https://i.ibb.co/4dP5G83/white-twitter.png" alt="twitter-icon" class="social-icon"></a>
-                <a href="#" href="#">
-                    <img src="https://i.ibb.co/wJtT58W/white-instagram.png" alt="white-instagram"
-                        class='social-icon'></a>
-                <a href="#" href="#">
-                    <img src="https://i.ibb.co/K6JNqqt/white-linkedin.png" alt="linkedin-icon" class='social-icon'></a>
-                <a href="#" href="#">
-                    <img src="https://i.ibb.co/SwKjvnr/white-youtube.png" alt="youtube-icon" class='social-icon'></a>
-
-            </div>
-
-        </footer>
+            <ul id="output-section">
 
 
+
+
+            </ul>
+
+
+
+
+
+            <footer id='footer-section'>
+
+                <a href="#" class="help-text">Help and Support</a>
+
+                <div class="logos-section">
+
+                    <a href="#">
+                        <img src="https://i.ibb.co/4dP5G83/white-twitter.png" alt="twitter-icon"
+                            class="social-icon"></a>
+                    <a href="#" href="#">
+                        <img src="https://i.ibb.co/wJtT58W/white-instagram.png" alt="white-instagram"
+                            class='social-icon'></a>
+                    <a href="#" href="#">
+                        <img src="https://i.ibb.co/K6JNqqt/white-linkedin.png" alt="linkedin-icon"
+                            class='social-icon'></a>
+                    <a href="#" href="#">
+                        <img src="https://i.ibb.co/SwKjvnr/white-youtube.png" alt="youtube-icon"
+                            class='social-icon'></a>
+
+                </div>
+
+            </footer>
+
+        </div>
 
         <script src="issuetracker.js"></script>
 

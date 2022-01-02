@@ -42,9 +42,10 @@ body {
     url("images/tool-spread.jpg") repeat center center / cover;
 }
 
-#header-bar {
-  display: flex;
-  flex-direction: column;
+.wrapper {
+  max-width: 800px;
+  align-items: center;
+  margin: 0 auto;
 }
 
 #input-section {
@@ -54,27 +55,20 @@ body {
 #header-bar {
   display: flex;
   flex-flow: row;
-  max-width: 800px;
+  max-width: 75%;
   height: auto;
   /* border: 1px orange solid; */
   align-items: center;
   margin: 0 auto;
-  padding: 3em 1em 1em;
+  padding: 2em 1em 1em;
   justify-content: space-evenly;
 }
 
-@media (max-width: 590px) {
-  #header-bar {
-    display: flex;
-    flex-flow: column;
-    padding-top: 2em;
-    width: 100vw;
-  }
-}
-
 #logo-img {
-  max-height: 150px;
+  max-height: 130px;
   width: auto;
+  padding: 5px;
+
   /* border: 1px white solid; */
 }
 
@@ -82,41 +76,53 @@ body {
   font-size: 40pt;
   font-weight: bolder;
   letter-spacing: 2px;
+  line-height: 1.1;
   color: white;
   margin: 0 auto;
-  /* border: 1px blue solid; */
-}
-
-@media (max-width: 590px) {
-  #heading {
-    font-size: 22pt;
-  }
+  padding: 0px 0px;
+  text-align: center;
 }
 
 #sub-head {
   text-align: center;
   color: white;
-  /* border: 1px black solid; */
-  font-size: 20pt;
+  font-size: 1.2rem;
   font-weight: bold;
   height: 90%;
-  /* word-wrap: normal; */
   margin: 5px auto;
 }
 
+@media (max-width: 590px) {
+  #heading {
+    font-size: 22pt;
+    margin: 0 auto;
+  }
+
+  #header-bar {
+    display: flex;
+    flex-flow: column;
+    padding-top: 2em;
+    width: 100vw;
+  }
+
+  #logo-img {
+    max-height: 70px;
+  }
+}
+
+/* FOR INFO FORM */
 #info-form {
   display: flex;
   flex-direction: column;
   color: white;
-  /* background-color: var(--main-element-color); */
   background-color: #fc4b1adc;
   max-width: 1000px;
   height: auto;
-  margin: 5px auto;
+  margin: 0px auto;
   justify-content: center;
   align-items: center;
   border-radius: var(--big-radius);
-  padding-top: 20px;
+  padding: 5px;
   box-shadow: 1px 20px 50px 10px #88888880;
   border: 3px white solid;
   transition-duration: 400ms;
@@ -127,51 +133,34 @@ body {
   border: 5px white solid;
   background-color: #fc4b1a;
 }
-@media (max-width: 700px) {
-  #info-form {
-    max-width: 100vw;
-  }
-}
 
 label {
   /* border: black 1px solid; */
   text-align: center;
-  font-size: 13pt;
-  font-weight: bolder;
-  font-kerning: 10pt;
-  margin-top: 3px;
+  font-size: 12pt;
+  font-weight: light;
+  margin: 8px auto 3px;
   /* padding-left: 7px; */
 }
 
 input {
-  height: 3rem;
+  height: 2.2rem;
+  font-size: 1rem;
   width: 70%;
   border: none;
-  /* outline: none; */
   border-radius: var(--medium-radius);
   padding-left: 10px;
 }
 
-@media (max-width: 500px) {
-  input {
-    height: 2.5rem;
-  }
-}
-
 select {
-  height: 3em;
+  height: 2.2em;
   width: 70%;
   margin: 0 auto;
   justify-items: center;
   border-radius: var(--medium-radius);
   border: none;
+  font-size: 1rem;
   padding-left: 10px;
-}
-
-@media (max-width: 500px) {
-  select {
-    height: 2.5rem;
-  }
 }
 
 #submit-button {
@@ -185,6 +174,23 @@ select {
   border: none;
 }
 
+@media (max-width: 500px) {
+  input {
+    height: 2.5rem;
+  }
+
+  select {
+    height: 2.5rem;
+  }
+}
+
+@media (max-width: 425px) {
+  #submit-button {
+    font-size: 0.85rem;
+  }
+}
+
+/* FOR DASHBOARD */
 .dashboard-output {
   display: flex;
   flex-flow: row;
@@ -222,6 +228,8 @@ select {
   height: 40px;
 }
 
+/* FOR OUTPUT SECTION */
+
 #output-section {
   display: flex;
   flex-direction: column;
@@ -233,7 +241,6 @@ select {
   list-style: none;
   padding: 20px 10px 0px 10px;
   border-radius: var(--big-radius);
-  /* box-shadow: 1px 20px 50px 10px #88888880; */
   border: 3px white solid;
   overflow: scroll;
   transition-duration: 500ms;
@@ -266,7 +273,7 @@ select {
 
 .info-box {
   color: var(--main-text-color);
-  font-size: 15pt;
+  font-size: 1rem;
   flex-direction: column;
   flex-grow: 1;
   word-wrap: normal;
@@ -274,7 +281,7 @@ select {
   border: lightslategray 1px solid;
   border: none;
   margin: 0 auto;
-  padding: 0.8rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   background-color: var(--other-light-color);
 }
 
@@ -359,14 +366,18 @@ select {
   background-color: rgb(232, 45, 45);
 }
 
+#id-Holder {
+  display: none;
+}
+
 #save-button {
   height: 3em;
   width: 40%;
-  background-color: yellowgreen;
+  background-color: rgb(184, 223, 106);
   border-radius: var(--big-radius);
-
   margin: 5px auto;
   border: none;
+  font-weight: bold;
 }
 
 #footer-section {
@@ -392,7 +403,6 @@ select {
 
 .help-text {
   color: white;
-  /* text-decoration: none; */
   font-size: 12pt;
   font-weight: bold;
 }

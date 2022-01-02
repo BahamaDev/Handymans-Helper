@@ -138,7 +138,7 @@ function stageData() {
   let rightLocation = document.getElementById("info-form");
   let saveButton = document.createElement("button");
   saveButton.setAttribute("id", "save-button");
-  saveButton.innerText = "Save Updated Data button";
+  saveButton.innerText = "SAVE UPDATE";
   rightLocation.appendChild(saveButton);
 
   saveButton.addEventListener("click", (event) => {
