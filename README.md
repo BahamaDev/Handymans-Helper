@@ -7,6 +7,7 @@ This maintenance tracker was built with maintenance companies, rental owners, an
 * HTML
 * CSS
 * Javascript
+* Local Storage
 
 
 ## Ho To:
