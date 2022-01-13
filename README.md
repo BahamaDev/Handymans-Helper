@@ -11,7 +11,7 @@ This maintenance tracker was built with maintenance companies, rental owners, an
 
 ## Ho To:
 
-To Create a new entry/ticket enter the necessary information into the related fields and hit submit.  Some fields are required before submission is possible. Each new entry is automatically given a unique ID number for referencing and tracking.
+To create a new ticket, enter the necessary information into the related fields and hit submit.  Some fields are required before submission is possible. Each new entry is automatically given a unique ID number for referencing and tracking.
 
 You can edit/ or update a ticket by pressing the Edit button.
 
